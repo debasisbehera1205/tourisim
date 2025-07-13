@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore World - Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="https://staging.chatflowapp.com/scripts/v1/pixel/JkNc4ZJj9hdR2t5U"></script>
+</head>
+<body>
+    <header>
+        <h1>Explore World</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h2>Discover Your Next Adventures</h2>
+            <p>Explore the world's most beautiful places with our expert guides</p>
+        </section>
+
+        <form method="post" id="newsletter-form">
+                <label for="email">Subscribe to our newsletter:</label>
+                <input type="email" id="email" name="email" required>
+                <button type="submit">Subscribe</button>
+                <div id="newsletter-message" style="margin-top:10px;"></div>
+            </form>
+            <script>
+            document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                var form = this;
+                var formData = new FormData(form);
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'index.php', true);
+                xhr.onload = function() {
+                    var msg = document.getElementById('newsletter-message');
+                    if (xhr.status === 200) {
+                        msg.textContent = 'Thank you for subscribing!';
+                        msg.style.color = 'green';
+                        form.reset();
+                    } else {
+                        msg.textContent = 'Subscription failed. Please try again.';
+                        msg.style.color = 'red';
+                    }
+                };
+                xhr.send(formData);
+            });
+
+            //Submit newsletter-form through jquery
+            $(document).ready(function() {
+                $('#newsletter-form').submit(function(e) {
+                    e.preventDefault();
+                    var form = $(this);
+                    var formData = form.serialize();
+                    $.ajax({
+                        type: 'POST',
+                        url: 'index.php',
+                        data: formData,
+                        success: function(response) {
+                            $('#newsletter-message').text('Thank you for subscribing!').css('color', 'green');
+                            form[0].reset();
+                        },
+                        error: function() {
+                            $('#newsletter-message').text('Subscription failed. Please try again.').css('color', 'red');
+                        }
+                    });
+                });
+            });
+            
+
+            </script>
+
+        <section class="intro">
+            <h2>Welcome to Explore World</h2>
+            <p>Founded in 2010, we've been helping travelers discover hidden gems around the globe. Our team of travel experts curates unique experiences that go beyond typical tourist attractions.</p>
+            
+            <div class="spacer"></div>
+            
+            <h3>Why Choose Us?</h3>
+            <p>With over 12 years in the industry, we've established relationships with local providers worldwide to bring you the best experiences at competitive prices.</p>
+            
+            <div class="spacer"></div>
+            
+            <h3>Our Mission</h3>
+            <p>To create meaningful travel experiences that connect people with cultures, nature, and themselves while promoting sustainable tourism practices.</p>
+            
+            <div class="spacer"></div>
+            
+            <h3>Travel Philosophy</h3>
+            <p>We believe travel should be transformative. Our trips are designed to challenge perspectives, create connections, and leave positive impacts on local communities.</p>
+            
+            <div data-push-notification-button="67fe00fe51b090316753caa6"></div>
+
+            <div class="spacer"></div>
+            
+            <h3>Sustainability Commitment</h3>
+            <p>We offset 100% of our carbon emissions and work with eco-conscious partners to minimize our environmental footprint.</p>
+            
+            <div class="spacer"></div>
+            
+            <h3>Safety First</h3>
+            <p>All our guides are trained in first aid and emergency procedures. We monitor travel advisories constantly to ensure your safety.</p>
+            
+            <div class="spacer"></div>
+            
+            <h3>Custom Experiences</h3>
+            <p>Can't find what you're looking for? Our travel designers can create a completely customized itinerary just for you.</p>
+            
+            <div class="spacer"></div>
+            
+            <h3>Testimonials</h3>
+            <p>"The best travel experience of my life! The attention to detail was incredible." - Sarah J.</p>
+            <p>"I've traveled with many companies, but Explore World stands above the rest." - Michael T.</p>
+            
+            <div class="spacer"></div>
+            
+            <h3>Join Our Community</h3>
+            <p>With over 50,000 satisfied travelers, we've built a vibrant community of explorers. Join us on social media to share your experiences.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Explore World. All rights reserved.</p>
+    </footer>
+</body>
+</html>
