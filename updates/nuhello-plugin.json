@@ -1,6 +1,6 @@
 {
-    "version": "1.0.1",
-    "zip_url": "https://cf.debasis.free.nf/updates/nuhello-plugin-1.0.1.zip",
+    "version": "1.0.2",
+    "zip_url": "https://cf.debasis.free.nf/updates/nuhello-plugin-1.0.2.zip",
     "homepage": "https://nuhello.com",
     "changelog": "Bug fixes and improvements"
 }
